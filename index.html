@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emisora Escolar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-top">
+                <h1>Emisora</h1>
+                <button id="statusBadge" class="status-badge live">En Vivo</button>
+            </div>
+            <p class="subtitle">Sugiere la canción o el artista que quieras escuchar y vota las propuestas de los demás. Las más votadas suenan primero.</p>
+            
+            <div id="adminPanel" class="admin-panel hidden">
+                <button id="resetBtn" class="apple-btn reset-btn"><i class="fas fa-sync-alt"></i> Reiniciar Lista Actual</button>
+            </div>
+        </header>
+
+        <nav class="tabs-segmented">
+            <button class="tab active" data-tab="songs">Canciones</button>
+            <button class="tab" data-tab="artists">Artistas</button>
+        </nav>
+
+        <button id="addBtn" class="apple-btn primary-btn"><i class="fas fa-plus"></i> Sugerir Canción</button>
+
+        <main id="feed">
+            <!-- El contenido se generará dinámicamente -->
+        </main>
+
+        <footer>
+            <button id="adminBtn" class="admin-icon" title="Modo DJ"><i class="fas fa-lock"></i></button>
+        </footer>
+    </div>
+
+    <!-- Modal para buscar -->
+    <div id="searchModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Buscar Canción</h2>
+                <button id="closeModal" class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div id="searchView">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Nombre de la canción..." autocomplete="off">
+                </div>
+                <div id="searchResults" class="results-list"></div>
+            </div>
+
+            <div id="manualView" style="display: none; flex-direction: column; gap: 12px; margin-top: 10px;">
+                <p style="font-size: 0.9rem; color: #a0aec0; margin-bottom: 5px;">Agrega los datos manualmente si no aparecen en la búsqueda.</p>
+                <input type="text" id="manualName" class="manual-input" placeholder="Nombre de la canción" autocomplete="off">
+                <input type="text" id="manualSubtitle" class="manual-input" placeholder="Nombre del artista (Opcional)" autocomplete="off">
+                <button id="saveManualBtn" class="apple-btn primary-btn" style="margin-bottom: 0;">Agregar a la lista</button>
+                <button id="cancelManualBtn" class="apple-btn" style="background: #282828; color: #e2e8f0; margin-bottom: 0;">Volver</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
